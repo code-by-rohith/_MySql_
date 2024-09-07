@@ -65,3 +65,23 @@ FROM student_details;
 SELECT * 
 FROM student_details
 WHERE enrollment_year BETWEEN 2019 AND 2021;
+
+SELECT * 
+FROM student_details
+WHERE INSTR(last_name, ',') > 0;
+
+
+
+SELECT * 
+FROM student_details
+WHERE INSTR(first_name, ' ') > 0 OR INSTR(last_name, ' ') > 0;
+
+SHOW INDEX FROM student_details;
+
+UPDATE student_details
+SET department = CASE
+    WHEN student_id = 1 THEN 'Artificial Intelligence'
+    WHEN student_id = 2 THEN 'Robotics'
+    ELSE department
+END
+WHERE student_id IN (1, 2);
