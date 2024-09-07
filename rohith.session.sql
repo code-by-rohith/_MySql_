@@ -85,3 +85,45 @@ SET department = CASE
     ELSE department
 END
 WHERE student_id IN (1, 2);
+
+
+SELECT department, first_name, last_name, gpa
+FROM student_details
+WHERE (department, gpa) IN (
+    SELECT department, MAX(gpa)
+    FROM student_details
+    GROUP BY department
+);
+
+
+SELECT enrollment_year, COUNT(*) AS number_of_students
+FROM student_details
+GROUP BY enrollment_year;
+
+
+SELECT department, first_name, last_name, age
+FROM student_details
+WHERE age = (
+    SELECT MIN(age)
+    FROM student_details 
+);
+
+
+SELECT 
+    ABS(
+        (SELECT AVG(gpa) FROM student_details WHERE gender = 'Male') - 
+        (SELECT AVG(gpa) FROM student_details WHERE gender = 'Female')
+    ) AS gpa_difference;
+
+
+UPDATE student_details
+SET gpa = gpa + 0.1
+WHERE gpa < 3.6;
+
+
+SELECT*from student_details
+
+SELECT first_name, last_name
+FROM student_details
+WHERE LENGTH(first_name) > 5 OR LENGTH(last_name) > 10;
+
