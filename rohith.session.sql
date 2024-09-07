@@ -21,4 +21,19 @@ VALUES
 (4, 'Vikas', 'Sharma', 24, 'Male', 'Information Technology', 3.5, 2019),
 (5, 'Priya', 'Rao', 22, 'Female', 'Electrical Engineering', 3.7, 2021);
 
+
+ALTER DATABASE information READ ONLY =1;
+
 SELECT * from student_details
+
+
+ALTER TABLE student_details
+MODIFY  gender VARCHAR(10)
+AFTER last_name;
+
+ALTER TABLE student_details
+MODIFY enrollment_year INT
+FIRST;
+
+SELECT * from student_details
+
