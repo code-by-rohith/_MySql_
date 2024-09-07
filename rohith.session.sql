@@ -22,7 +22,7 @@ VALUES
 (5, 'Priya', 'Rao', 22, 'Female', 'Electrical Engineering', 3.7, 2021);
 
 
-ALTER DATABASE information READ ONLY =1;
+ALTER DATABASE information READ ONLY =0;
 
 SELECT * from student_details
 
@@ -35,5 +35,33 @@ ALTER TABLE student_details
 MODIFY enrollment_year INT
 FIRST;
 
+ALTER TABLE student_details
+MODIFY enrollment_year INT
+AFTER gpa
+
 SELECT * from student_details
 
+SELECT * 
+FROM student_details
+WHERE first_name LIKE 'S%';
+
+SELECT * 
+FROM student_details
+ORDER BY RAND()
+LIMIT 1;
+
+SELECT MAX(gpa) AS second_highest_gpa
+FROM student_details
+WHERE gpa < (SELECT MAX(gpa) FROM student_details);
+
+SELECT * 
+FROM student_details
+ORDER BY LENGTH(first_name) DESC
+LIMIT 3;
+
+SELECT CONCAT(first_name, ' ', last_name) AS full_name, gpa
+FROM student_details;
+
+SELECT * 
+FROM student_details
+WHERE enrollment_year BETWEEN 2019 AND 2021;
