@@ -127,7 +127,6 @@ SELECT first_name, last_name
 FROM student_details
 WHERE LENGTH(first_name) > 5 OR LENGTH(last_name) > 10;
 
--- Example: Use the CASE statement to label students based on GPA
 SELECT first_name, last_name, gpa,
        CASE
            WHEN gpa >= 3.8 THEN 'Excellent'
